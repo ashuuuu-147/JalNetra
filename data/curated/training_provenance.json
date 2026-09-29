@@ -1,0 +1,215 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-29T19:22:02.531515+00:00",
+  "processing_version": "jalnetra-ingest-v1.0.0",
+  "synthetic_rows": 0,
+  "mock_rows": 0,
+  "total_rows": 1504,
+  "positive_rows": 313,
+  "negative_rows": 1191,
+  "unique_events": 16,
+  "held_out_replay_events_excluded": [
+    "REPLAY_2023_HP_BEAS_JULY",
+    "REPLAY_2023_HP_MANDI_AUG"
+  ],
+  "parquet_path": "data/curated/training_features.parquet",
+  "parquet_sha256": "e2fc90ae8d53293f0fea22f478b95d846b544babd7faa25037165e71cdcab7f1",
+  "sources": [
+    {
+      "source_id": "era5_land",
+      "name": "Copernicus ERA5-Land Hourly Reanalysis",
+      "provider": "Copernicus Climate Change Service (C3S) / ECMWF via Open-Meteo Archive",
+      "url": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land",
+      "api_endpoint": "https://archive-api.open-meteo.com/v1/archive",
+      "dataset_version": "ERA5-Land-Hourly-v1",
+      "license": "CC-BY 4.0 (Contains modified Copernicus Climate Change Service information)"
+    },
+    {
+      "source_id": "nasadem",
+      "name": "NASA NASADEM / USGS SRTM 30m Digital Elevation Model",
+      "provider": "NASA / USGS / JPL",
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/NASA_NASADEM_HGT_001",
+      "api_endpoint": "https://api.open-meteo.com/v1/elevation",
+      "dataset_version": "NASADEM_HGT_001",
+      "license": "NASA Open Data Policy"
+    },
+    {
+      "source_id": "gfd",
+      "name": "Global Flood Database v1 (MODIS / Dartmouth Flood Observatory)",
+      "provider": "Cloud to Street / Dartmouth Flood Observatory",
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/GLOBAL_FLOOD_DB_MODIS_EVENTS_V1",
+      "dataset_version": "GLOBAL_FLOOD_DB_MODIS_EVENTS_V1",
+      "license": "CC BY-NC 4.0"
+    },
+    {
+      "source_id": "isro_landslide",
+      "name": "Landslide Atlas of India (1998-2022)",
+      "provider": "ISRO / NRSC",
+      "url": "https://www.isro.gov.in/Landslide_Atlas_India.html",
+      "dataset_version": "NRSC-Landslide-Atlas-2023",
+      "license": "Official ISRO/NRSC Publication"
+    },
+    {
+      "source_id": "jrc_gsw",
+      "name": "JRC Global Surface Water Mapping Layers v1.4",
+      "provider": "EC JRC / Google",
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_GlobalSurfaceWater",
+      "dataset_version": "JRC_GSW1_4",
+      "license": "Source: EC JRC/Google (Copernicus free and open policy)"
+    }
+  ],
+  "fetch_Hashes": [
+    {
+      "source_id": "nasadem",
+      "watershed_id": "ws_kullu_beas",
+      "valley_sha256": "3d8f532c1a6d84c8b71546631d147a30635e87d99289a3c28e989c635b8a08ab",
+      "upland_sha256": "aed821e98cd8e913fd11377a948a2d5421be935c3ab09256117b8148cadc54c7",
+      "retrieved_at": "2026-09-29T19:20:04.095754+00:00"
+    },
+    {
+      "source_id": "nasadem",
+      "watershed_id": "ws_parvati_bhuntar",
+      "valley_sha256": "21f2fecb6fae3ca3a6b1e02504e493f5280ebb6430eb6990a3cfb9faf784120a",
+      "upland_sha256": "abb336e671e3b9f8ed83e6b9a6500387fd68118bb04c9c2133f4d5ee20af8b88",
+      "retrieved_at": "2026-09-29T19:20:04.096075+00:00"
+    },
+    {
+      "source_id": "nasadem",
+      "watershed_id": "ws_sainj_tirthan",
+      "valley_sha256": "bf2bcefea4da90d3e5f70099c8befdf4d23ada1ec2c04d5b675220313b636759",
+      "upland_sha256": "966787d62b400b9d93e5946341f47220793dca1ebbb0a783299bdcddcda71a1b",
+      "retrieved_at": "2026-09-29T19:20:04.096211+00:00"
+    },
+    {
+      "source_id": "nasadem",
+      "watershed_id": "ws_pandoh_mandi",
+      "valley_sha256": "d00ec1a24c7e6d16ea296d995064a37809cd283f6a2ab42c41e03859d481674e",
+      "upland_sha256": "e7d454e9a2ac10959afdc1fc41e3d590682f13f71197bdf40afd2a0a04378285",
+      "retrieved_at": "2026-09-29T19:20:04.096340+00:00"
+    },
+    {
+      "source_id": "nasadem",
+      "watershed_id": "ws_uhal_sujanpur",
+      "valley_sha256": "2d11099d735b04f40c1b4c9812034b044ed6fc093373fa1adfd9a05f2cab2832",
+      "upland_sha256": "9dcc836a76722852d14915225b902a50249570eeb8a5c057cce077dec4dc3fd7",
+      "retrieved_at": "2026-09-29T19:20:04.096469+00:00"
+    },
+    {
+      "source_id": "nasadem",
+      "watershed_id": "ws_sutlej_rampur",
+      "valley_sha256": "d13906bf0c21e3d9616971361c707022e5b8f662d968b3de898506ea92005144",
+      "upland_sha256": "bf9cfb5a10a8f35ebb05df69ce5fb21208c250fd14d6382177b335342aed3aea",
+      "retrieved_at": "2026-09-29T19:20:04.096605+00:00"
+    },
+    {
+      "source_id": "nasadem",
+      "watershed_id": "ws_alaknanda_chamoli",
+      "valley_sha256": "fe81867c114190bd1316882c7329ab77bc252987a49a27e805bc28a1bf82e9d9",
+      "upland_sha256": "adf717ddbe19e12b9236a60bc269487d60e175f5b48e70ae8dc409fd189118f5",
+      "retrieved_at": "2026-09-29T19:20:04.096725+00:00"
+    },
+    {
+      "source_id": "nasadem",
+      "watershed_id": "ws_mandakini_rudraprayag",
+      "valley_sha256": "d969b62a7fe65c4550929b1f9063ea5b3bb21ef3540a2ac7351c291c0e354aee",
+      "upland_sha256": "6e9672626dba08052b0e59f61bdd94c0fecb42066ccd06867921bb075fe52ea9",
+      "retrieved_at": "2026-09-29T19:20:04.096935+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_2686_2005_SUTLEJ",
+      "sha256": "7fb3dcf1fb1c5ddd0be7cdd078a87ecc63b84c2ed4eac7dac92c2c9146f7156c",
+      "retrieved_at": "2026-09-29T19:20:05.279721+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_3126_2007_HIMALAYAN_FOOTHILLS",
+      "sha256": "82c5ea2c31d9417d23d55117bcb7b787a477ddba3b022580d5d887ae396b6779",
+      "retrieved_at": "2026-09-29T19:20:06.396492+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_3318_2008_UPPER_BEAS",
+      "sha256": "1b83d708b7419c9f0c2af1a2c9f8d78d17b74d5ef807526b4b8c2ee8c9acea87",
+      "retrieved_at": "2026-09-29T19:20:07.523235+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_3723_2010_UTTARAKHAND_ALAKNANDA",
+      "sha256": "89f1d041f392523b2ffd4acbb00430df3000a55a61fd81d3637ef36ed2c6ee65",
+      "retrieved_at": "2026-09-29T19:20:08.777217+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_3851_2011_HP_BEAS_AUGUST",
+      "sha256": "375c1b7a9322a957ea52dcf58f9be5eefabe77fd9e93f0a26122d4c9aac46531",
+      "retrieved_at": "2026-09-29T19:20:36.369050+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_3960_2012_KULLU_PARVATI",
+      "sha256": "1c008f937124764fa32c09dc6e31b386859e1a8ca54428ebc8c5bce7f46375fc",
+      "retrieved_at": "2026-09-29T19:20:37.506928+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_3991_2012_UKHIMATH_MANDAKINI",
+      "sha256": "72e9227ad0adf6002b572013af7646bb988846a1fdeaa65ebe32d4acd78c2898",
+      "retrieved_at": "2026-09-29T19:20:54.515097+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_4064_2013_KEDARNATH_MANDAKINI",
+      "sha256": "cb7710d24348a132e518481ef5551ecc31996a60920b2796d8beaa7276d34cab",
+      "retrieved_at": "2026-09-29T19:20:55.759806+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_4179_2014_WESTERN_HIMALAYA",
+      "sha256": "4e9cb8d844bc4bc76c75e953cca583c3c4f7f0a184ae386692aafa1741da137f",
+      "retrieved_at": "2026-09-29T19:20:56.877816+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_4282_2015_MANDI_SAINJ",
+      "sha256": "9242c6876efd1d0dac0dd2dbef9b52cc4361a623691092d423c19ba6410da21d",
+      "retrieved_at": "2026-09-29T19:21:13.934508+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_4381_2016_CHAMOLI_ALAKNANDA",
+      "sha256": "0388334000281040c7199c33eed9a2cad7e5c37f6645aa2b4299620697c1b215",
+      "retrieved_at": "2026-09-29T19:21:15.092181+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_4508_2017_MANDI_KOTRUPI",
+      "sha256": "131dd53c6ed43a7cca8473d0f3c2fd670d8754b62579578c7428702b481272b4",
+      "retrieved_at": "2026-09-29T19:21:23.686446+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "DFO_4660_2018_KULLU_BEAS_SEPTEMBER",
+      "sha256": "6063134b79a813c9a1a49c2532264475e28199bb0381e504d5f9eedbc5418025",
+      "retrieved_at": "2026-09-29T19:21:24.875798+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "IMD_2019_HP_BEAS_AUGUST",
+      "sha256": "ea0895c5c19f3e5d114100e83af0e8b751df1008ef20b328b06f321d3211a194",
+      "retrieved_at": "2026-09-29T19:21:33.574750+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "IMD_2021_UTTARAKHAND_OCTOBER",
+      "sha256": "a1227f738b5bde39a991c0a636c584ac46cee3f8a86e1367310f03a17f1b881a",
+      "retrieved_at": "2026-09-29T19:22:01.186584+00:00"
+    },
+    {
+      "source_id": "era5_land",
+      "event_id": "IMD_2022_HP_MANDI_CHAKKI",
+      "sha256": "41e58c937f32481e8923ac2ac5edf217028b7aa7366086e4553fa31003e55f06",
+      "retrieved_at": "2026-09-29T19:22:02.453848+00:00"
+    }
+  ]
+}

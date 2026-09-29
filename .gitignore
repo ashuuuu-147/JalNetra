@@ -1,0 +1,30 @@
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+.pytest_cache/
+*.egg-info/
+
+# Local SQLite database runtime copy (curated datasets and migrations are tracked)
+data/jalnetra.db
+data/jalnetra.db-journal
+
+# Node / Web
+node_modules/
+apps/web/dist/
+apps/web/.vite/
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db

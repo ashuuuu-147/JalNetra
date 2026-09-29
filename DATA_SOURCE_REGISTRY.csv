@@ -1,0 +1,14 @@
+source_id,name,provider,url,role,resolution_or_cadence,coverage,access_or_license,notes
+imd_api,IMD API,India Meteorological Department,https://api.imd.gov.in/public/api_reference.html,live rainfall nowcast warnings basin QPF,endpoint-defined,current,account/access may be required,Use authorized credentials only
+imd_ffg,National Flash Flood Guidance,India Meteorological Department,https://hydro.imd.gov.in/national/,operational reference and benchmark,6h/24h guidance,current,official portal,Do not impersonate official warning
+gsmap_isro,GSMaP_ISRO Rain,MOSDAC/ISRO,https://mosdac.gov.in/gsmap-isro-rain,historical and near-real-time rainfall,0.1deg hourly,Mar 2000 onward,Open Access,HDF5 IMD gauge-adjusted satellite rainfall
+gpm_imerg,NASA GPM IMERG,NASA,https://gpm.nasa.gov/data/imerg,rainfall,30min product cadence,product dependent,NASA Earthdata terms,Preserve product/version metadata
+era5_land,ERA5-Land,Copernicus/ECMWF,https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land,soil moisture rainfall runoff snow,hourly ~9km native / 0.1deg time-series,1950-present,CC-BY,Use required attribution
+nasadem,NASADEM,NASA/USGS/JPL,https://developers.google.com/earth-engine/datasets/catalog/NASA_NASADEM_HGT_001,terrain,30m,static,NASA data policy,Elevation/slope/flow features
+srtm,SRTM,NASA/USGS/JPL,https://developers.google.com/earth-engine/datasets/catalog/USGS_SRTMGL1_003,terrain,30m,static,NASA/JPL terms,Alternative to NASADEM
+jrc_gsw,JRC Global Surface Water,EC JRC/Google,https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_GlobalSurfaceWater,water mask,30m,1984-2021,Copernicus free with attribution,Use Source: EC JRC/Google
+gfd,Global Flood Database v1,Cloud to Street/Dartmouth Flood Observatory,https://developers.google.com/earth-engine/datasets/catalog/GLOBAL_FLOOD_DB_MODIS_EVENTS_V1,supervised flood labels and historical replay,event maps,2000-2018,CC BY-NC 4.0 in EE catalog,913 mapped flood events
+isro_landslide,India Landslide Atlas,ISRO/NRSC,https://www.isro.gov.in/Landslide_Atlas_India.html,landslide context,inventory,1998-2022,official source,~80000 mapped landslides; 17 states + 2 UTs
+cwc_hmo,CWC Hydro-Meteorological Observation,Central Water Commission,https://cwc.gov.in/hydro-meteorological-observation,river observations,station-defined,current and historical,government access rules,CWC states 878 sites
+ndem,NDEM,NRSC/ISRO,https://ndem.nrsc.gov.in/,flood/landslide/river/route reference,spatial layers,near-real-time and events,authorized portal,Do not bypass authentication
+osm,OpenStreetMap,OSM contributors,https://www.openstreetmap.org/,roads and base map,vector,current,current,ODbL attribution,Do not label OSM shelters verified without confirmation

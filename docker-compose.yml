@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+  postgis:
+    image: postgis/postgis:16-3.4-alpine
+    container_name: jalnetra-postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-jalnetra}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-jalnetra_dev_only}
+      POSTGRES_DB: ${POSTGRES_DB:-jalnetra}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+      - ./infrastructure/migrations/001_init_postgis_schema.sql:/docker-entrypoint-initdb.d/001_init_postgis_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-jalnetra} -d $${POSTGRES_DB:-jalnetra}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: jalnetra-mqtt
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./infrastructure/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+
+  api:
+    build:
+      context: .
+      dockerfile: infrastructure/Dockerfile.api
+    container_name: jalnetra-api
+    restart: unless-stopped
+    env_file:
+      - .env.example
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-jalnetra}:${POSTGRES_PASSWORD:-jalnetra_dev_only}@postgis:5432/${POSTGRES_DB:-jalnetra}
+      MQTT_BROKER_HOST: mosquitto
+      MQTT_BROKER_PORT: 1883
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgis:
+        condition: service_healthy
+      mosquitto:
+        condition: service_started
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: ../../infrastructure/Dockerfile.web
+    container_name: jalnetra-web
+    restart: unless-stopped
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  postgis_data:
+  mosquitto_data:
+  mosquitto_log:

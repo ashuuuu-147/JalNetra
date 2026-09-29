@@ -1,0 +1,131 @@
+{
+  "method": "SHAP",
+  "base_value": -1.44576,
+  "sample_rows": 448,
+  "feature_importance": [
+    {
+      "feature": "flow_accumulation",
+      "mean_abs_shap": 1.92879
+    },
+    {
+      "feature": "soil_water_l1",
+      "mean_abs_shap": 1.32945
+    },
+    {
+      "feature": "rain_24h",
+      "mean_abs_shap": 1.2877
+    },
+    {
+      "feature": "rain_48h",
+      "mean_abs_shap": 1.15374
+    },
+    {
+      "feature": "soil_water_l2",
+      "mean_abs_shap": 0.36794
+    },
+    {
+      "feature": "distance_to_stream",
+      "mean_abs_shap": 0.359
+    },
+    {
+      "feature": "antecedent_precipitation_index",
+      "mean_abs_shap": 0.35441
+    },
+    {
+      "feature": "soil_water_l4",
+      "mean_abs_shap": 0.25777
+    },
+    {
+      "feature": "elevation",
+      "mean_abs_shap": 0.2069
+    },
+    {
+      "feature": "rain_72h",
+      "mean_abs_shap": 0.20094
+    },
+    {
+      "feature": "aspect",
+      "mean_abs_shap": 0.18714
+    },
+    {
+      "feature": "tri",
+      "mean_abs_shap": 0.18171
+    },
+    {
+      "feature": "rain_anomaly_24h",
+      "mean_abs_shap": 0.16755
+    },
+    {
+      "feature": "rain_12h",
+      "mean_abs_shap": 0.15526
+    },
+    {
+      "feature": "soil_water_l3",
+      "mean_abs_shap": 0.14191
+    },
+    {
+      "feature": "landslide_density",
+      "mean_abs_shap": 0.10038
+    },
+    {
+      "feature": "twi",
+      "mean_abs_shap": 0.08918
+    },
+    {
+      "feature": "drainage_density",
+      "mean_abs_shap": 0.08536
+    },
+    {
+      "feature": "rain_1h",
+      "mean_abs_shap": 0.07549
+    },
+    {
+      "feature": "forecast_rain_6h",
+      "mean_abs_shap": 0.07258
+    },
+    {
+      "feature": "forecast_rain_24h",
+      "mean_abs_shap": 0.06321
+    },
+    {
+      "feature": "rain_6h",
+      "mean_abs_shap": 0.05246
+    },
+    {
+      "feature": "rain_3h",
+      "mean_abs_shap": 0.0346
+    },
+    {
+      "feature": "runoff",
+      "mean_abs_shap": 0.02608
+    },
+    {
+      "feature": "distance_to_landslide",
+      "mean_abs_shap": 0.02488
+    },
+    {
+      "feature": "slope",
+      "mean_abs_shap": 0.01439
+    },
+    {
+      "feature": "curvature",
+      "mean_abs_shap": 0.00694
+    },
+    {
+      "feature": "permanent_water_fraction",
+      "mean_abs_shap": 0.0042
+    },
+    {
+      "feature": "snow_depth",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "snowmelt",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "historical_flood_frequency",
+      "mean_abs_shap": 0.0
+    }
+  ]
+}

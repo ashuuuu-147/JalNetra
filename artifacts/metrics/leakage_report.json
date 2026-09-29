@@ -1,0 +1,50 @@
+{
+  "model_version": "v1.0.0",
+  "audited_at": "2026-09-29T19:23:15.844468+00:00",
+  "passed_all_checks": true,
+  "checks": {
+    "zero_synthetic_or_mock_rows": true,
+    "zero_event_overlap_train_val": true,
+    "zero_event_overlap_train_test": true,
+    "zero_event_overlap_val_test": true,
+    "strict_temporal_event_ordering": true,
+    "held_out_replay_excluded_from_corpus": true,
+    "calibration_fit_on_validation_only": true
+  },
+  "temporal_boundaries": {
+    "train_start": "2005-06-24T00:00:00+00:00",
+    "train_end": "2016-07-07T21:00:00+00:00",
+    "val_start": "2017-08-12T00:00:00+00:00",
+    "val_end": "2019-08-21T21:00:00+00:00",
+    "test_start": "2021-10-17T00:00:00+00:00",
+    "test_end": "2022-08-23T21:00:00+00:00"
+  },
+  "split_events": {
+    "train_events": [
+      "DFO_2686_2005_SUTLEJ",
+      "DFO_3126_2007_HIMALAYAN_FOOTHILLS",
+      "DFO_3318_2008_UPPER_BEAS",
+      "DFO_3723_2010_UTTARAKHAND_ALAKNANDA",
+      "DFO_3851_2011_HP_BEAS_AUGUST",
+      "DFO_3960_2012_KULLU_PARVATI",
+      "DFO_3991_2012_UKHIMATH_MANDAKINI",
+      "DFO_4064_2013_KEDARNATH_MANDAKINI",
+      "DFO_4179_2014_WESTERN_HIMALAYA",
+      "DFO_4282_2015_MANDI_SAINJ",
+      "DFO_4381_2016_CHAMOLI_ALAKNANDA"
+    ],
+    "val_events": [
+      "DFO_4508_2017_MANDI_KOTRUPI",
+      "DFO_4660_2018_KULLU_BEAS_SEPTEMBER",
+      "IMD_2019_HP_BEAS_AUGUST"
+    ],
+    "test_events": [
+      "IMD_2021_UTTARAKHAND_OCTOBER",
+      "IMD_2022_HP_MANDI_CHAKKI"
+    ],
+    "held_out_replay_events": [
+      "REPLAY_2023_HP_BEAS_JULY",
+      "REPLAY_2023_HP_MANDI_AUG"
+    ]
+  }
+}
