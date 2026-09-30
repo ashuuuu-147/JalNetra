@@ -25,28 +25,7 @@ import { AlertItem, AreaRiskDetail, AreaSummary, ScreenId } from './types';
 import { StatusBadge } from './components/StatusBadge';
 import { RiskMapView } from './components/RiskMapView';
 
-const ENV_API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
-
-async function apiFetch(path: string, init?: RequestInit): Promise<Response> {
-  const storedBase =
-    typeof window !== 'undefined' ? (window.localStorage.getItem('JALNETRA_API_BASE_URL') || '').replace(/\/$/, '') : '';
-  const primaryBase = storedBase || ENV_API_BASE;
-
-  try {
-    const res = await fetch(`${primaryBase}${path}`, init);
-    const contentType = res.headers.get('content-type') || '';
-    // If primaryBase is empty (same-origin) and static server returned HTML instead of JSON API, fallback to localhost:8000
-    if (!primaryBase && (!res.ok || contentType.includes('text/html'))) {
-      return await fetch(`http://localhost:8000${path}`, init);
-    }
-    return res;
-  } catch (err) {
-    if (!primaryBase) {
-      return await fetch(`http://localhost:8000${path}`, init);
-    }
-    throw err;
-  }
-}
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 
 const NAV_ITEMS: Array<{ id: ScreenId; label: string; icon: React.ReactNode }> = [
   { id: 'dashboard', label: '1. Operations Dashboard', icon: <Activity size={16} aria-hidden="true" /> },
@@ -119,15 +98,15 @@ export const App: React.FC = () => {
     try {
       const qs = `?event_id=${encodeURIComponent(selectedEventId)}&step_index=${stepIndex}`;
       const [areasRes, detailRes, mapRes, replayEvRes, replayTimeRes, alertsRes, routeRes] = await Promise.all([
-        apiFetch(`/api/v1/areas${qs}`),
-        apiFetch(`/api/v1/areas/${selectedWatershedId}/risk${qs}`),
-        apiFetch(`/api/v1/map/layers${qs}`),
-        apiFetch(`/api/v1/replay/events`),
-        apiFetch(
-          `/api/v1/replay/${selectedEventId}/timeline?watershed_id=${selectedWatershedId}&step_index=${stepIndex}`,
+        fetch(`${API_BASE}/api/v1/areas${qs}`),
+        fetch(`${API_BASE}/api/v1/areas/${selectedWatershedId}/risk${qs}`),
+        fetch(`${API_BASE}/api/v1/map/layers${qs}`),
+        fetch(`${API_BASE}/api/v1/replay/events`),
+        fetch(
+          `${API_BASE}/api/v1/replay/${selectedEventId}/timeline?watershed_id=${selectedWatershedId}&step_index=${stepIndex}`,
         ),
-        apiFetch(`/api/v1/alerts`),
-        apiFetch(`/api/v1/routes/plan`, {
+        fetch(`${API_BASE}/api/v1/alerts`),
+        fetch(`${API_BASE}/api/v1/routes/plan`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -183,11 +162,11 @@ export const App: React.FC = () => {
   const fetchGovernanceAndMetrics = useCallback(async () => {
     try {
       const [sourcesRes, sensorsRes, sheltersRes, provRes, metricsRes] = await Promise.all([
-        apiFetch(`/api/v1/sources/health`),
-        apiFetch(`/api/v1/sensors`),
-        apiFetch(`/api/v1/shelters`),
-        apiFetch(`/api/v1/provenance`),
-        apiFetch(`/api/v1/models/v1.0.0/metrics`),
+        fetch(`${API_BASE}/api/v1/sources/health`),
+        fetch(`${API_BASE}/api/v1/sensors`),
+        fetch(`${API_BASE}/api/v1/shelters`),
+        fetch(`${API_BASE}/api/v1/provenance`),
+        fetch(`${API_BASE}/api/v1/models/v1.0.0/metrics`),
       ]);
       if (sourcesRes.ok) setSourcesHealth(await sourcesRes.json());
       if (sensorsRes.ok) setSensorsData(await sensorsRes.json());
@@ -220,7 +199,7 @@ export const App: React.FC = () => {
   }, [isPlayingReplay, totalSteps]);
 
   const handleTriggerAlert = async () => {
-    await apiFetch(`/api/v1/alerts`, {
+    await fetch(`${API_BASE}/api/v1/alerts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -245,7 +224,7 @@ export const App: React.FC = () => {
   const handleConfirmTransition = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!dialogAlert) return;
-    await apiFetch(`/api/v1/alerts/${dialogAlert.alert_id}/transition`, {
+    await fetch(`${API_BASE}/api/v1/alerts/${dialogAlert.alert_id}/transition`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -263,7 +242,7 @@ export const App: React.FC = () => {
   const handleSensorPacketSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSensorSubmitResult(null);
-    const resp = await apiFetch(`/api/v1/sensors/readings`, {
+    const resp = await fetch(`${API_BASE}/api/v1/sensors/readings`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -293,7 +272,7 @@ export const App: React.FC = () => {
   };
 
   const handleRefreshLiveSources = async () => {
-    await apiFetch(`/api/v1/sources/refresh`, { method: 'POST' });
+    await fetch(`${API_BASE}/api/v1/sources/refresh`, { method: 'POST' });
     await fetchGovernanceAndMetrics();
   };
 
