@@ -2,16 +2,26 @@ services:
   - type: web
     name: jalnetra-api
     runtime: docker
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./infrastructure/Dockerfile.api
     dockerContext: .
-    plan: free
+    plan: starter
     healthCheckPath: /api/v1/health
     envVars:
       - key: PORT
         value: 8000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: jalnetra-db
+          property: connectionString
       - key: IMD_API_KEY
         sync: false
       - key: MOSDAC_USERNAME
         sync: false
       - key: NASA_EARTHDATA_TOKEN
         sync: false
+
+databases:
+  - name: jalnetra-db
+    plan: starter
+    databaseName: jalnetra
+    user: jalnetra
