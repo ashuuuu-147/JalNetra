@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: jalnetra-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: IMD_API_KEY
+        sync: false
+      - key: MOSDAC_USERNAME
+        sync: false
+      - key: NASA_EARTHDATA_TOKEN
+        sync: false
