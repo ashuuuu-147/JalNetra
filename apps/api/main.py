@@ -17,6 +17,8 @@ import uuid
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
@@ -1733,3 +1735,22 @@ def get_complete_provenance(db: Session = Depends(get_db)) -> Dict[str, Any]:
             for l in audit_logs
         ],
     }
+
+
+WEB_DIST_DIR = ROOT_DIR / "apps" / "web" / "dist"
+if (WEB_DIST_DIR / "assets").exists():
+    app.mount("/assets", StaticFiles(directory=str(WEB_DIST_DIR / "assets")), name="web_assets")
+
+
+@app.get("/", include_in_schema=False)
+def serve_frontend_root():
+    index_file = WEB_DIST_DIR / "index.html"
+    if index_file.exists():
+        return FileResponse(str(index_file))
+    return {
+        "status": "ok",
+        "project": "JalNetra (FloodGuard AI)",
+        "health_endpoint": "/api/v1/health",
+        "docs_endpoint": "/docs",
+    }
+

@@ -125,10 +125,10 @@ class FloodRiskEngine:
         if hasattr(est, "named_steps"):
             scaler = est.named_steps["scale"]
             clf = est.named_steps["clf"]
-            x_s = pd.DataFrame(scaler.transform(x_imp), columns=FEATURES)
-            explainer = shap.LinearExplainer(clf, x_s)
-            sv = np.asarray(explainer.shap_values(x_s)).ravel()
-            base_val = float(np.asarray(explainer.expected_value).ravel()[0])
+            x_s = np.asarray(scaler.transform(x_imp)).ravel()
+            coefs = np.asarray(clf.coef_).ravel()
+            sv = x_s * coefs
+            base_val = float(np.asarray(clf.intercept_).ravel()[0])
         else:
             explainer = shap.TreeExplainer(est)
             raw_sv = explainer.shap_values(x_imp)

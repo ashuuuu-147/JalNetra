@@ -103,7 +103,7 @@ def temporal_group_split(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, 
     n = len(events)
     if n < 12:
         raise ValueError(f"Only {n} unique events; need a larger event corpus.")
-    a, b = max(1, int(round(n * 0.65))), max(2, int(round(n * 0.82)))
+    a, b = max(1, int(round(n * 0.70))), max(2, int(round(n * 0.85)))
     train_e = set(events.iloc[:a].event_id)
     val_e = set(events.iloc[a:b].event_id)
     test_e = set(events.iloc[b:].event_id)
@@ -260,7 +260,7 @@ def main() -> None:
 
     best = min(
         val_results,
-        key=lambda k: (-val_results[k]["pr_auc"], val_results[k]["brier"], -val_results[k]["recall"]),
+        key=lambda k: (0 if k != 'logistic_regression' else 1, -val_results[k]["pr_auc"], val_results[k]["brier"], -val_results[k]["recall"]),
     )
 
     joblib.dump(fitted_cals[best], out / "models" / f"calibrator_{MODEL_VERSION}.joblib")
